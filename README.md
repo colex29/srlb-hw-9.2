@@ -9,6 +9,15 @@
 
 2)Приложите в файл README.md текст использованных команд в GitHub
 
+```wget https://repo.zabbix.com/zabbix/6.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.2-4+ubuntu22.04_all.deb```
+```dpkg -i zabbix-release_6.2-4+ubuntu22.04_all.deb```
+```sudo dpkg -i zabbix-release_6.2-4+ubuntu22.04_all.deb```
+```sudo apt update```
+```sudo apt install postgresql```
+```sudo apt install zabbix-server-pgsql zabbix-frontend-php php8.1-pgsql zabbix-apache-conf zabbix-sql-scripts zabbix-agent```
+```sudo -u postgres createuser --pwprompt zabbix```
+```sudo -u postgres createdb -O zabbix zabbix```
+``` ```
 
 ---
 
