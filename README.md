@@ -1,45 +1,49 @@
-# Домашнее задание к занятию "`Система мониторинга Zabbix. Часть 2`" - `Прохоров Семен`
+# Домашнее задание к занятию "`Система мониторинга Prometheus`" - `Прохоров Семен`
 
 ### Задание 1
 
-Установите Zabbix Server с веб-интерфейсом.
+Установите Prometheus.
 
-1) Прикрепите в файл README.md скриншот авторизации в админке
-![alt text](https://github.com/colex29/srlb-hw-9.2/blob/main/img/1.PNG)
+Прикрепите к файлу README.md скриншот systemctl status prometheus, где будет написано: prometheus.service — Prometheus Service Netology Lesson 9.4 — [Ваши ФИО]
 
-2) Приложите в файл README.md текст использованных команд в GitHub
-
-`wget https://repo.zabbix.com/zabbix/6.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.2-4+ubuntu22.04_all.deb`<br>
-`dpkg -i zabbix-release_6.2-4+ubuntu22.04_all.deb`<br>
-`sudo dpkg -i zabbix-release_6.2-4+ubuntu22.04_all.deb`<br>
-`sudo apt update`<br>
-`sudo apt install postgresql`<br>
-`sudo apt install zabbix-server-pgsql zabbix-frontend-php php8.1-pgsql zabbix-apache-conf zabbix-sql-scripts`<br>
-`sudo -u postgres createuser --pwprompt zabbix`<br>
-`sudo -u postgres createdb -O zabbix zabbix`
-
+![alt text](https://github.com/colex29/srlb-hw-9.4/blob/f6fbca19e1c289fcd1382868d2b81f75723eed4a/img/1.PNG)
 ---
 
 ### Задание 2
 
-Установите Zabbix Agent на два хоста.
+Установите Node Exporter.
 
-1) Приложите в файл README.md скриншот раздела Configuration > Hosts, где видно, что агенты подключены к серверу
-![alt text](https://github.com/colex29/srlb-hw-9.2/blob/main/img/2.PNG)
-![alt text](https://github.com/colex29/srlb-hw-9.2/blob/main/img/3.PNG)
+Прикрепите к файлу README.md скриншот systemctl status node-exporter, где будет написано: node-exporter.service — Node Exporter Netology Lesson 9.4 — [Ваши ФИО]
 
-2) Приложите в файл README.md скриншот лога zabbix agent, где видно, что он работает с сервером
-![alt text](https://github.com/colex29/srlb-hw-9.2/blob/main/img/4.PNG)
+![alt text](https://github.com/colex29/srlb-hw-9.4/blob/f6fbca19e1c289fcd1382868d2b81f75723eed4a/img/2.PNG)
+---
 
-3) Приложите в файл README.md скриншот раздела Monitoring > Latest data для обоих хостов, где видны поступающие от агентов данные.
-![alt text](https://github.com/colex29/srlb-hw-9.2/blob/main/img/5.PNG)
-![alt text](https://github.com/colex29/srlb-hw-9.2/blob/main/img/6.PNG)
+### Задание 3
 
-4) Приложите в файл README.md текст использованных команд в GitHub
+Подключите Node Exporter к серверу Prometheus.
 
-`sudo apt install zabbix-agent -y`<br>
-`sudo systemctl restart zabbix-agent`<br>
-`sudo systemctl enable zabbix-agent`<br>
-`sed -i 's/Server=127.0.0.1/Server=10.10.5.72'/g' /etc/zabbix/zabbix_server.conf`<br>
-`sudo systemctl restart zabbix-agent`<br>
-`cat /var/log/zabbix/zabbix_agentd.log`
+Прикрепите к файлу README.md скриншот конфигурации из интерфейса Prometheus вкладки Status > Configuration
+
+![alt text](https://github.com/colex29/srlb-hw-9.4/blob/f6fbca19e1c289fcd1382868d2b81f75723eed4a/img/3.PNG)
+
+Прикрепите к файлу README.md скриншот из интерфейса Prometheus вкладки Status > Targets, чтобы было видно минимум два эндпоинта
+
+![alt text](https://github.com/colex29/srlb-hw-9.4/blob/f6fbca19e1c289fcd1382868d2b81f75723eed4a/img/4.PNG)
+
+### Задание 4
+
+Установите Grafana.
+
+Прикрепите к файлу README.md скриншот левого нижнего угла интерфейса, чтобы при наведении на иконку пользователя были видны ваши ФИО
+
+![alt text](https://github.com/colex29/srlb-hw-9.4/blob/f6fbca19e1c289fcd1382868d2b81f75723eed4a/img/5.PNG)
+
+### Задание 5
+
+Интегрируйте Grafana и Prometheus.
+
+Прикрепите к файлу README.md скриншот дашборда (ID:11074) с поступающими туда данными из Node Exporter
+
+![alt text](https://github.com/colex29/srlb-hw-9.4/blob/f6fbca19e1c289fcd1382868d2b81f75723eed4a/img/6.PNG)
+
+![alt text](https://github.com/colex29/srlb-hw-9.4/blob/f6fbca19e1c289fcd1382868d2b81f75723eed4a/img/7.PNG)
